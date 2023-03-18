@@ -1,5 +1,9 @@
-[
-  {"firstName": "Aaron", "lastName": "Newell", "country": "England", "img": "https://i.imgur.com/CFgX3Xx.png", "isStudent": false},
+export const data = [
+  {"firstName": "Aaron", 
+  "lastName": "Newell", 
+  "country": "England", 
+  "img": "https://i.imgur.com/CFgX3Xx.png", 
+  "isStudent": false},
   {"firstName": "Alec", "lastName": "Budd", "country": "USA", "img": "http://res.cloudinary.com/djyjdargg/image/upload/v1550165485/Ironclass/IH_Jan1950.jpg.jpg", "isStudent": true},
   {"firstName": "Alexander", "lastName": "Burdett", "country": "England", "img": "http://res.cloudinary.com/djyjdargg/image/upload/v1550166990/Ironclass/alexander.jpeg.jpg", "isStudent": true},
   {"firstName": "Amelia", "lastName": "Chorng Ua", "country": "Malaysia", "img": "http://res.cloudinary.com/djyjdargg/image/upload/v1550168765/Ironclass/IH_Jan1952.jpg.jpg", "isStudent": true},
