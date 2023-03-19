@@ -3,12 +3,17 @@
   margin: 0%;
 }
 
-.IdCard_container {
+.IdCard_container, .ClickablePicture_container{
   display: flex;
   align-items: center;
+  justify-content: center;
   border: 1px solid black;
   flex-wrap: wrap;
   margin: 4% 0%;
+}
+
+.ClickablePicture_container img {
+  width: 40%;
 }
 
 .IdCard_container{
@@ -34,17 +39,12 @@
     padding: 2% 30%;
   }
 
-  /* .DriverCard_container div:first-child img{
-    border-radius: 30px;
-    width: 50%;
+  .LikeButton_container button {
+    border-radius: 45px;
   }
-  
-  .DriverCard_container div:last-child img{
-    width: 5%;
-  } */
 }
 
-.CreditCard_container, .Rating_container{
+.CreditCard_container, .Rating_container, .LikeButton_container, .Dice_container, .Carousel_container, .NumberTable_container{
   margin: 4%;
   display: flex;
   flex-wrap: wrap;
@@ -115,6 +115,10 @@
   .DriverCard_container {
     padding: 2% 0%;
   }
+
+  .LikeButton_container button {
+    border-radius: 25px;
+  }
 }
 
 .DriverCard_container div:first-child{
@@ -140,4 +144,32 @@
 
 .DriverCard_container div p, .DriverCard_container div h2{
   color: white;
+}
+
+.LikeButton_container {
+  width: 15%;
+}
+
+.LikeButton_container button {
+  width: 100%;
+  font-size: large;
+  padding: 6%;
+  border: none;
+}
+
+.Carousel_container {
+  width: 90%;
+}
+
+.Carousel_container > * {
+  padding: 2%;
+}
+
+.Carousel_container button {
+  border: none;
+  background-color:rgba(240, 248, 255, 0);
+}
+
+.NumberTable_container h1{
+  text-align: center;
 }

@@ -8,8 +8,11 @@ import CreditCard from './components/CreditCard';
 import Rating from './components/Rating';
 import DriverCard from './components/DriverCard';
 import LikeButton from './components/LikeButton';
+import ClickablePicture from './components/ClickablePicture';
+import Dice from './components/Dice'
+import Carousel from './components/Carousel';
+import NumbersTable from './components/NumberTable';
 import {data as importdata} from './data/berlin'
-
 
 
 function App() {
@@ -17,6 +20,7 @@ function App() {
 
   return (
     <div className="App">
+    <ClickablePicture img={require('./assets/images/maxence.png')} imgClicked={require('./assets/images/maxence-glasses.png')}/>
       {data.map((elem,i) => {
         const r_random = Math.floor(Math.random()*255)
         const g_random = Math.floor(Math.random()*255)
@@ -51,6 +55,16 @@ function App() {
               licensePlate: `${Math.floor(Math.random()*2) === 1 ? "CO42DE": "BE33ER"}`
             }} />
             <LikeButton />
+            <Dice/>
+            <Carousel
+              images={[
+                'https://randomuser.me/api/portraits/women/1.jpg',
+                'https://randomuser.me/api/portraits/men/1.jpg',
+                'https://randomuser.me/api/portraits/women/2.jpg',
+                'https://randomuser.me/api/portraits/men/2.jpg'
+              ]}
+            />
+            <NumbersTable limit={Math.round(Math.random() * (20) + 7)} />
         </div>
       )}
      )}
