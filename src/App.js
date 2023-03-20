@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import './App.css';
 import Greetings from './components/Greetings';
 import IdCard from './components/IdCard';
@@ -13,12 +13,13 @@ import Dice from './components/Dice'
 import Carousel from './components/Carousel';
 import NumbersTable from './components/NumberTable';
 import SignupPage from './components/SignupPage';
+import RGBColorPicker from './components/RGBColorPicker';
 import {data as profiles} from './data/berlin'
-
 
 
 function App() {
   const [selected,setSelected] = useState([])
+  // eslint-disable-next-line
   const [data, setData] = useState(profiles)
 
   const handleSelected = (e) => {
@@ -26,15 +27,11 @@ function App() {
     newselected.indexOf(e.target.name) < 0 ? newselected.push(e.target.name): newselected.splice(newselected.indexOf(e.target.name),1)
     setSelected(newselected)
   }
-  console.log(selected)
 
-  // const handleCountry = () => {
-  //   setData([...data].filter(elem => elem.country === ))
-  // }
-// style={{backgroundColor:`${selected.indexOf(elem.country) < 0 ? 'white':'#A3D2E2' }`}} 
   return (
     <div className="App">
     <SignupPage/>
+    <RGBColorPicker rValue={Math.floor(Math.random()*255)} gValue={Math.floor(Math.random()*255)} bValue={Math.floor(Math.random()*255)}/>
     <div className='NavbarCountry_container'>
       {[...data].filter((elem,i) => [...data].map(elem=>elem.country).indexOf(elem.country)===i).map((elem,i) => 
           <button  

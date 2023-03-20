@@ -47,6 +47,15 @@ form > * {
   width: 40%;
 }
 
+.RGBColorPicker_container, .RGBColorPicker_container div, .RGBColorPicker_container div > * {
+  padding: 1% 4%;
+}
+
+.RGBColorPicker_container div div{
+  width: 20%;
+}
+
+
 .NavbarCountry_container button {
   border: none;
   margin: 0.5%;
@@ -55,11 +64,15 @@ form > * {
 }
 
 .IdCard_container, .SignupPage_container, .ClickablePicture_container,.NavbarCountry_container {
+  justify-content: center;
+  margin: 4% 0%;
+}
+
+.IdCard_container, .SignupPage_container, .ClickablePicture_container,.NavbarCountry_container, .RGBColorPicker_container div{
   display: flex;
   align-items: center;
-  justify-content: center;
   flex-wrap: wrap;
-  margin: 4% 0%;
+  
 }
 
 .IdCard_container, .ClickablePicture_container {
