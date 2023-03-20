@@ -1,6 +1,4 @@
 import React,{useState} from "react"
-import check from '../assets/images/check.png'
-import cross from '../assets/images/cross.png'
 import hide from '../assets/images/hide.png'
 import show from '../assets/images/show.png'
 
@@ -17,7 +15,7 @@ export default function SignupPage(){
         password:''
     }
 
-    const [eye,setEye] = useState(show)
+    const [eye,setEye] = useState(hide)
     const [newsignup,setSignup] = useState(initialState)
     const [submit,setSubmit] = useState(true)
     const [error,setError] = useState(initialErrorState)
@@ -25,7 +23,6 @@ export default function SignupPage(){
     const handleEmailError = (e) => {
         const emailRegex = /([a-z]|[A-Z]|[0-9]|[_-])@gmail.com/
         const email_ValidationError = emailRegex.test(e.target.value)
-        console.log(email_ValidationError,e.target.value)
         setError(prev => {
             return { ...prev, email:email_ValidationError}})
     }
@@ -33,7 +30,6 @@ export default function SignupPage(){
     const handlePasswordError = (e) => {
         const passwordRegex = /^[a-zA-Z0-9!@#\$%\^\&*\)\(+=._-]{6,}$/g
         const password_weakError = passwordRegex.test(e.target.value)
-        console.log(password_weakError,e.target.value)
         setError(prev => {
             return { ...prev, password:password_weakError}})
     }
@@ -45,12 +41,14 @@ export default function SignupPage(){
                 [e.target.name]:e.target.value
             }
         })
-        e.target.name === 'email' ? handleEmailError(e):handlePasswordError(e)
+        e.target.name === 'email' ? handleEmailError(e):e.target.name === 'password' &&handlePasswordError(e)
     }
+
+    console.log(newsignup)
 
     const handleNoErrorSubmit = (e) => {
         e.preventDefault()
-        Object.values(error).filter(elem => elem===true).length===Object.keys(error).length ? handleSubmit():setSubmit(false)
+        Object.values(error).filter(elem => elem===true).length===Object.keys(error).length ? handleSubmit(e):setSubmit(false)
     }
 
     const handleEye_Password = () => {
@@ -61,7 +59,7 @@ export default function SignupPage(){
     const handleSubmit = (e) => {
         e.preventDefault()
         setSignup(initialState)
-        setSubmit(true)
+        setSubmit('send')
     }
     
 
@@ -72,11 +70,11 @@ export default function SignupPage(){
                 <input className={`email_input ${error.email === true ? 'check':error.email === false ? 'cross':''}`} type='text' name='email' value={newsignup.email} onChange={handleChange}></input>
                 {error.email === true ? <p style={{color:'green'}}>You typed a valid email</p>: error.email === false && <p style={{color:'red'}}>You typed an invalid email</p>}
                 <label>Password</label>
-                <input className={`password_input ${error.password === true ? 'check':error.password === false ? 'cross':''}`} type={eye===hide ? 'text':'password'} name='password' value={newsignup.password} onChange={handleChange}></input>
+                <input className={`password_input ${error.password === true ? 'check':error.password === false ? 'cross':''}`} type={eye===show ? 'text':'password'} name='password' value={newsignup.password} onChange={handleChange}></input>
                 <img className="eye_password" src={eye} onClick={handleEye_Password} alt={eye}/>
                 {error.password === true ? <p style={{color:'green'}}>You typed a valid password</p>: error.password === false && <p style={{color:'red'}}>Your password is too weak & it must be at least 6 characters long</p>}
                 <label>Nationality</label>
-                <select name="type" value={newsignup.nationality} onChange={handleChange}>
+                <select name="nationality" value={newsignup.nationality} onChange={handleChange}>
                     <option value="German">German</option>
                     <option value="English">English</option>
                     <option value="Spanish">Spanish</option>
