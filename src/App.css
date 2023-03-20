@@ -3,13 +3,67 @@
   margin: 0%;
 }
 
-.IdCard_container, .ClickablePicture_container{
+.SignupPage_container div:last-child {
+  margin-top: 3%;
+  width: 80%;
+}
+
+form > * {
+  width: 90%;
+  margin-left: 5%;
+  padding: 1%;
+}
+
+.password_input{
+  border: 2px solid;
+  width: 80%;
+}
+
+.eye_password {
+  margin-left: 1%;
+  width: 8%;
+}
+
+.check {
+  background: url('./assets/images/check.png') no-repeat right;
+  background-size:contain;
+  border: solid green;
+}
+
+.cross {
+  background: url('./assets/images/cross.png') no-repeat right;
+  background-size:contain;
+  border: solid red;
+}
+
+
+.SignupPage_container form label {
+  margin-top: 3%;
+}
+
+.SignupPage_container form button {
+  background-color: aqua;
+  margin-top: 6%;
+  width: 40%;
+}
+
+.NavbarCountry_container button {
+  border: none;
+  margin: 0.5%;
+  padding: 1.5%;
+  border-radius: 20px;
+}
+
+.IdCard_container, .SignupPage_container, .ClickablePicture_container,.NavbarCountry_container {
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid black;
   flex-wrap: wrap;
   margin: 4% 0%;
+}
+
+.IdCard_container, .ClickablePicture_container {
+  border: 1px solid black;
 }
 
 .ClickablePicture_container img {
@@ -143,7 +197,7 @@
 }
 
 .DriverCard_container div p, .DriverCard_container div h2{
-  color: white;
+  color: rgb(255, 255, 255);
 }
 
 .LikeButton_container {
@@ -172,4 +226,6 @@
 
 .NumberTable_container h1{
   text-align: center;
+  width: 10%;
+  border: solid black;
 }

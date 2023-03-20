@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './App.css';
 import Greetings from './components/Greetings';
 import IdCard from './components/IdCard';
@@ -12,14 +12,38 @@ import ClickablePicture from './components/ClickablePicture';
 import Dice from './components/Dice'
 import Carousel from './components/Carousel';
 import NumbersTable from './components/NumberTable';
-import {data as importdata} from './data/berlin'
+import SignupPage from './components/SignupPage';
+import {data as profiles} from './data/berlin'
+
 
 
 function App() {
-  const [data, setData] = useState(importdata)
+  const [selected,setSelected] = useState([])
+  const [data, setData] = useState(profiles)
 
+  const handleSelected = (e) => {
+    let newselected = [...selected]
+    newselected.indexOf(e.target.name) < 0 ? newselected.push(e.target.name): newselected.splice(newselected.indexOf(e.target.name),1)
+    setSelected(newselected)
+  }
+  console.log(selected)
+
+  // const handleCountry = () => {
+  //   setData([...data].filter(elem => elem.country === ))
+  // }
+// style={{backgroundColor:`${selected.indexOf(elem.country) < 0 ? 'white':'#A3D2E2' }`}} 
   return (
     <div className="App">
+    <SignupPage/>
+    <div className='NavbarCountry_container'>
+      {[...data].filter((elem,i) => [...data].map(elem=>elem.country).indexOf(elem.country)===i).map((elem,i) => 
+          <button  
+          style={{backgroundColor:`${selected.indexOf(elem.country) >= 0 ? '#A3D2E2':'rgb(240, 240, 240)'}`}} 
+          name={elem.country} 
+          onClick={handleSelected} 
+          key={i}
+          >{elem.country}</button>)}
+    </div>
     <ClickablePicture img={require('./assets/images/maxence.png')} imgClicked={require('./assets/images/maxence-glasses.png')}/>
       {data.map((elem,i) => {
         const r_random = Math.floor(Math.random()*255)
@@ -31,7 +55,7 @@ function App() {
         const valuetoHex = (c) => ((c.toString(16).length === 1) ? `0${c.toString(16)}`: c.toString(16))
         const rgbtoHex = (r,g,b) => (valuetoHex(parseInt(r)) + valuetoHex(parseInt(g)) + valuetoHex(parseInt(b)))
         return (
-        <div className="IdCard_container" key={i}>
+        <div className="IdCard_container" style={{backgroundColor:`${selected.indexOf(elem.country) >= 0 ? '#A3D2E2':'rgb(240, 240, 240)'}`}}  key={i}>
           <IdCard person={elem}/>
           <Greetings lang={elem.country === 'Germany' ? 'de': elem.country === 'Catalonia' ? 'es' : elem.country === 'France' ? 'fr' : 'en' }>{elem.firstName}</Greetings>
           <Random min={1} max={(Math.random()*Math.random()*100)*10} />
